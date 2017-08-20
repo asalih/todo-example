@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DevAssign.Data.Model.Log>
+@{
+    ViewBag.Title = "ErrorLogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ErrorLogs</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 75px">#</th>
+            <th>Message</th>
+            <th style="width: 100px">Type</th>
+            <th style="width: 100px">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td><div class="exMsg">@item.Message</div></td>
+                <td>@item.Type</td>
+                <td>@item.CreateDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.Partial("ErrorPaging", ViewData)

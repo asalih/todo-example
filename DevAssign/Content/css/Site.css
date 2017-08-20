@@ -39,3 +39,7 @@ textarea {
 ul {
     list-style-type: none;
 }
+.exMsg{
+    max-height:200px;
+    overflow: auto;
+}

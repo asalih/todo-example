@@ -242,6 +242,8 @@
     <Content Include="Views\User\Modals\ReminderModal.cshtml" />
     <Content Include="Views\User\Reminders.cshtml" />
     <Content Include="Views\User\ReminderItem.cshtml" />
+    <Content Include="Views\Shared\ErrorLogs.cshtml" />
+    <Content Include="Views\Shared\ErrorPaging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

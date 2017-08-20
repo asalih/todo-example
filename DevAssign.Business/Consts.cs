@@ -10,5 +10,6 @@ namespace DevAssign.Business
     {
         public const string SESSION_USER_KEY = "SESSION_USER_KEY";
         public const int NOTIFY_RANGE = 250;
+        public const int PAGE_SIZE = 20;
     }
 }

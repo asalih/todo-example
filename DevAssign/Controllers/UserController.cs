@@ -176,5 +176,22 @@ namespace DevAssign.Controllers
         }
         #endregion
 
+        #region Error Logs
+        [Route("errorlogs/{page?}")]
+        [OutputCache(VaryByParam = "page", Duration = 0)]
+        public ActionResult ErrorLogs(int page = 1)
+        {
+            var logRepo = base.UnitOfWork.GetRepository<Log>();
+            ViewData["CurrentPage"] = page;
+
+            page--;
+            var errors = logRepo.GetAll().OrderByDescending(s => s.Id).Skip(page * Consts.PAGE_SIZE).Take(Consts.PAGE_SIZE).ToList();
+
+            ViewData["AllCount"] = logRepo.GetAll().Count();
+            return View(errors);
+
+        }
+        #endregion
+
     }
 }

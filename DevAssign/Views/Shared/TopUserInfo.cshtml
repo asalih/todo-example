@@ -7,6 +7,7 @@
             <span>Hi!</span>
             @Html.ActionLink(!string.IsNullOrEmpty(Model.FullName) ? Model.FullName : "-", "UserMain", "User")
             <button class="btn btn-outline-default my-2 my-sm-0" type="submit">Sign out</button>
+            <a class="btn btn-outline-default my-2 my-sm-0" href="/user/errorlogs">Error Logs</a>
         </form>
     }
     else

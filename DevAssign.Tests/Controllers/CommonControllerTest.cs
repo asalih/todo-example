@@ -24,8 +24,6 @@ namespace DevAssign.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-
-
         [TestMethod]
         public void Contact()
         {
@@ -34,6 +32,42 @@ namespace DevAssign.Tests.Controllers
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public void SignUp()
+        {
+            // Arrange
+            CommonController controller = new CommonController();
+
+            // Act
+            ViewResult result = controller.SignUp() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public void Login()
+        {
+            // Arrange
+            CommonController controller = new CommonController();
+
+            // Act
+            ViewResult result = controller.Login() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public void TopUserInfo()
+        {
+            // Arrange
+            CommonController controller = new CommonController();
+
+            // Act
+            ViewResult result = controller.TopUserInfo() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
