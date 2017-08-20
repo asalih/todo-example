@@ -1,0 +1,39 @@
+﻿
+
+<div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Reminders</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="form-group form-inline">
+                        <input class="form-control" type="text" id="remindDate" placeholder="Select Date" />
+                        <select id="hour" class="form-control">
+                            @for (int i = 0; i < 24; i++)
+                            {
+                                <option value="@i">@i.ToString().PadLeft(2, '0')</option>
+                            }
+                        </select>
+                        <select id="minute" class="form-control">
+                            @for (int i = 0; i < 59; i++)
+                            {
+                                <option value="@i">@i.ToString().PadLeft(2, '0')</option>
+                            }
+                        </select>
+                        <button type="button" id="saveReminder" class="btn btn-primary">Save Reminder</button>
+                    </div>
+                    <div id="reminderContent"></div>
+                    <input type="hidden" id="activeTaskForReminder" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

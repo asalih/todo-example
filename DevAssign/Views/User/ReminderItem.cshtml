@@ -1,0 +1,7 @@
+﻿@model DevAssign.Data.Model.Reminder
+<li class="list-group-item" data-reminder-id="@Model.Id">
+    <span>@Model.When</span>
+    <div class="pull-right small">
+        <a href="javascript:void(0)" class="delete-reminder" data-reminder-id="@Model.Id">&times;</a>
+    </div>
+</li>

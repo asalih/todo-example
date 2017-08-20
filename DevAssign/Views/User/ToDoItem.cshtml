@@ -1,0 +1,26 @@
+﻿@model DevAssign.Data.Model.ToDo
+
+<h4 class="pull-left">@Model.ToDoName</h4>
+<div class="pull-right small">
+    <a href="javascript:void(0)" class="add-task" data-id="@Model.Id">create task</a> | 
+    <a href="javascript:void(0)" class="edit-toDo" data-id="@Model.Id">edit</a> | 
+    <a href="javascript:void(0)" class="delete-toDo" data-id="@Model.Id">&times;</a>
+</div>
+
+<div class="clearfix"></div>
+<hr />
+<ul class="list-group">
+    @if (Model.Tasks != null && Model.Tasks.Count > 0)
+    {
+
+        foreach (var task in Model.Tasks.OrderByDescending(s => s.CreateDate))
+        {
+            @Html.Partial("Task", task)
+        }
+
+    }
+    else
+    {
+        <li class="text-center"><a href="javascript:void(0)" class="add-task" data-id="@Model.Id">add task</a></li>
+    }
+</ul>

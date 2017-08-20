@@ -1,0 +1,21 @@
+﻿@model DevAssign.Data.Model.Task
+<li class="list-group-item" data-task="@Model.Id">
+    <div class="small">
+        @Model.CreateDate.ToString()
+        <div class="pull-right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> options <span class="caret"></span> </a>
+            <ul class="dropdown-menu" aria-labelledby="drop6">
+                <li>
+                    <a href="javascript:void(0)" class="addReminder">reminders</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="editTask">edit</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><a href="javascript:void(0)" class="deleteTask" title="delete">delete</a></li>
+            </ul>
+            
+        </div>
+    </div>
+    <div class="taskBody">@Model.TaskBody</div>
+</li>

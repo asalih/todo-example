@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DevAssign.Data.Model.ToDo>
+<div class="form-inline">
+    <div class="form-group">
+        <input type="hidden" id="toDoId" />
+        <input type="text" class="form-control input-lg" id="toDoName" placeholder="ToDo name here">
+        <button type="button" class="btn btn-primary btn-lg" id="saveToDo">Save</button>
+        <button type="button" class="btn btn-default btn-lg" style="display:none" id="cancelToDo">Cancel</button>
+    </div>
+</div>
+<hr />
+@if (Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="todoitem" data-selector="todo_@item.Id">
+            @Html.Partial("ToDoItem", item)
+        </div>
+    }
+}
+else
+{
+    <div>nothing to show. add new to do.</div>
+}
+
+@Html.Partial("Modals/TaskModal")
+@Html.Partial("Modals/ReminderModal")

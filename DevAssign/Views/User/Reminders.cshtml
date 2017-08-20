@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DevAssign.Data.Model.Reminder>
+
+<ul class="list-group">
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (var item in Model)
+        {
+            @Html.Partial("ReminderItem", item)
+        }
+    }
+    else
+    {
+        <li class="list-group-item text-center">
+            nothing to show.
+        </li>
+    }
+</ul>

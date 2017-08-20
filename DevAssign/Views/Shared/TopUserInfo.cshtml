@@ -1,0 +1,19 @@
+﻿@model DevAssign.Data.Model.User
+
+<div class="navbar-form navbar-right">
+    @if (Model != null)
+    {
+        <form action="/user/signout" method="post">
+            <span>Hi!</span>
+            @Html.ActionLink(!string.IsNullOrEmpty(Model.FullName) ? Model.FullName : "-", "UserMain", "User")
+            <button class="btn btn-outline-default my-2 my-sm-0" type="submit">Sign out</button>
+        </form>
+    }
+    else
+    {
+        @Html.ActionLink("login", "Login", "Common")
+        <span> | </span>
+        @Html.ActionLink("sign up", "SignUp", "Common")
+
+    }
+</div>
