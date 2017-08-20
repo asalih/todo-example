@@ -18,40 +18,33 @@ namespace DevAssign.Tests.Data
     [TestClass]
     public class UserTest
     {
-        private EFDataContext context;
-
-        private IUnitOfWork unitOfWork;
-        private IRepository<User> userRepository;
-
-        [TestInitialize]
-        public void TestInitialize()
-        {
-            context = new EFDataContext();
-            unitOfWork = new EFUnitOfWork(context);
-            userRepository = unitOfWork.GetRepository<User>();
-        }
 
         [TestMethod]
         public void CreateUser()
         {
-            User user = new User
-            {
-                CreateDate = DateTime.Now,
-                Email = "asalih@testuser.com",
-                FullName = "Ahmet Salih",
-                Password = "123456"
-            };
+            var fakeUser = new User() { Id = 1, FullName = "Ahmet Salih", Email="ahmet.salih@windowslive.com" };
+            var _userRepository = new Mock<IRepository<User>>();
+            _userRepository.Setup(s => s.Add(fakeUser)).Returns(fakeUser);
 
-            userRepository.Add(user);
-            int result = unitOfWork.SaveChanges();
+            var _unitOfWork = new Mock<IUnitOfWork>();
+            _unitOfWork.Setup(s => s.SaveChanges()).Returns(1);
 
+            var user = _userRepository.Object.Add(fakeUser);
+            int result = _unitOfWork.Object.SaveChanges();
+
+            Assert.IsNotNull(user);
             Assert.AreNotEqual(-1, result);
 
         }
         [TestMethod]
         public void GetUser()
         {
-            User user = userRepository.GetById(1);
+            var fakeUser = new List<User>() { new User() { Id = 1, FullName = "Ahmet Salih" } }.AsQueryable();
+
+            var _userRepository = new Mock<IRepository<User>>();
+            _userRepository.Setup(s => s.GetAll(null)).Returns(fakeUser);
+
+            var user = _userRepository.Object.GetAll();
 
             Assert.IsNotNull(user);
         }
@@ -59,11 +52,12 @@ namespace DevAssign.Tests.Data
         [TestMethod]
         public void UpdateUser()
         {
-            User user = userRepository.GetById(1);
+            var fakeUser = new User() { Id = 1, FullName = "Ahmet Salih", Email = "ahmet.salih@windowslive.com" };
+            var _userRepository = new Mock<IRepository<User>>();
+            _userRepository.Setup(s => s.Update(fakeUser));
 
-            user.Password = "123456";
-            userRepository.Update(user);
-            int result = unitOfWork.SaveChanges();
+            var _unitOfWork = new Mock<IUnitOfWork>();
+            var result = _unitOfWork.Setup(s => s.SaveChanges()).Returns(1);
 
             Assert.AreNotEqual(-1, result);
         }
@@ -71,10 +65,13 @@ namespace DevAssign.Tests.Data
         [TestMethod]
         public void DeleteUser()
         {
-            User user = userRepository.GetById(1);
+            var fakeUser = new User() { Id = 1, FullName = "Ahmet Salih", Email = "ahmet.salih@windowslive.com" };
+            var _userRepository = new Mock<IRepository<User>>();
 
-            userRepository.Delete(user);
-            int result = unitOfWork.SaveChanges();
+            _userRepository.Setup(s => s.Delete(fakeUser));
+
+            var _unitOfWork = new Mock<IUnitOfWork>();
+            var result = _unitOfWork.Setup(s => s.SaveChanges()).Returns(1);
 
             Assert.AreNotEqual(-1, result);
         }

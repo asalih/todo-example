@@ -60,17 +60,5 @@ namespace DevAssign.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-        [TestMethod]
-        public void TopUserInfo()
-        {
-            // Arrange
-            CommonController controller = new CommonController();
-
-            // Act
-            ViewResult result = controller.TopUserInfo() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
     }
 }
