@@ -30,7 +30,7 @@ namespace DevAssign.Controllers
 
         [HttpPost, Route("signup")]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateUser(UserModel user)
+        public ActionResult CreateUser(User user)
         {
             if (!ModelState.IsValid)
             {
@@ -40,6 +40,8 @@ namespace DevAssign.Controllers
             var userRepo = base.UnitOfWork.GetRepository<User>();
 
             user.CreateDate = DateTime.Now;
+
+            //User u = (Data.Model.User)user;
             userRepo.Add(user);
             base.UnitOfWork.SaveChanges();
 
