@@ -20,7 +20,7 @@
                             }
                         </select>
                         <select id="minute" class="form-control">
-                            @for (int i = 0; i < 59; i++)
+                            @for (int i = 0; i < 60; i++)
                             {
                                 <option value="@i">@i.ToString().PadLeft(2, '0')</option>
                             }
