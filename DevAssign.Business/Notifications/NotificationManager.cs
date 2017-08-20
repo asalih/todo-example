@@ -25,7 +25,7 @@ namespace DevAssign.Business.Notifications
                 return factory.StartNew(() =>
                 {
                     var reminderRepo = unitOfWorks.GetRepository<DevAssign.Data.Model.Reminder>();
-                    var reminders = reminderRepo.GetAll(reminder => reminder.When < DateTime.Now, "Task,Task.ToDo.User").Take(Consts.NOTIFY_RANGE).ToList();
+                    var reminders = reminderRepo.GetAll(reminder => reminder.When < DateTime.Now && !reminder.NotifyState, "Task,Task.ToDo.User").Take(Consts.NOTIFY_RANGE).ToList();
 
                     if (reminders != null && reminders.Count > 0)
                     {

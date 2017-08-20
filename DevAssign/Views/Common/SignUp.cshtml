@@ -1,4 +1,4 @@
-﻿@model DevAssign.Data.Model.User
+﻿@model DevAssign.Model.UserModel
 
 @{
     ViewBag.Title = "Signup";
@@ -46,3 +46,7 @@
         </div>
     </div>
 } 
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

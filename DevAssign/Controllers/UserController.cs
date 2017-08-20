@@ -136,7 +136,7 @@ namespace DevAssign.Controllers
         public ActionResult Reminders(int taskId)
         {
             var reminderRepository = base.UnitOfWork.GetRepository<Reminder>();
-            var list = reminderRepository.GetAll(rem => rem.TaskId == taskId).OrderBy(rem => rem.When).ThenBy(rem => rem.NotifyState);
+            var list = reminderRepository.GetAll(rem => rem.TaskId == taskId).OrderBy(rem => rem.NotifyState).ThenBy(rem => rem.When);
 
             return PartialView(list);
         }

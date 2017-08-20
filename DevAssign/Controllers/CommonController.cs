@@ -30,7 +30,7 @@ namespace DevAssign.Controllers
 
         [HttpPost, Route("signup")]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateUser(User user)
+        public ActionResult CreateUser(UserModel user)
         {
             if (!ModelState.IsValid)
             {
@@ -45,6 +45,21 @@ namespace DevAssign.Controllers
 
             return Redirect("/login");
         }
+
+        [HttpPost, Route("CheckExistingEmail")]
+        public ActionResult CheckExistingEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+
+            var userRepo = base.UnitOfWork.GetRepository<User>();
+
+            var count = userRepo.GetAll(s => s.Email == email).Count();
+            return Json(count == 0, JsonRequestBehavior.AllowGet);
+        }
+
         [Route("login")]
         public ActionResult Login()
         {
