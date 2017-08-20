@@ -41,7 +41,7 @@
             async: 'true',
             success: function (result) {
                 $("#reminderContent").empty().html(result);
-                $(".delete-reminder").on("click", app.deleteReminder);
+                $(".delete-reminder").off("click").on("click", app.deleteReminder);
             }
         });
 
@@ -161,25 +161,25 @@
     }
 
     app.todoBind = function () {
-        $('.add-task').on('click', app.openTaskModalForCreate);
-        $("#saveToDo").on("click", app.saveToDo);
-        $(".delete-toDo").on("click", app.deleteToDo);
-        $(".edit-toDo").on("click", function () {
+        $('.add-task').off("click").on('click', app.openTaskModalForCreate);
+        $("#saveToDo").off("click").on("click", app.saveToDo);
+        $(".delete-toDo").off("click").on("click", app.deleteToDo);
+        $(".edit-toDo").off("click").on("click", function () {
             var parent = $(this).parents(".todoitem").find("h4");
             $("#toDoName").val(parent.text());
             $("#toDoId").val($(this).attr("data-id"));
             $("#cancelToDo").show();
         });
-        $("#cancelToDo").on("click", function () {
+        $("#cancelToDo").off("click").on("click", function () {
             $("#cancelToDo").hide();
             $("#toDoId,#toDoName").val("")
         });
     }
 
     app.taskBind = function () {
-        $('.deleteTask').on('click', app.deleteTask);
-        $('.editTask').on('click', app.openTaskModalForUpdate);
-        $(".addReminder").on('click', app.openReminderModel);
+        $('.deleteTask').off("click").on('click', app.deleteTask);
+        $('.editTask').off("click").on('click', app.openTaskModalForUpdate);
+        $(".addReminder").off("click").on('click', app.openReminderModel);
 
         $('#taskModal').on('hidden.bs.modal', function () {
             app.clearInputs();
@@ -198,7 +198,7 @@
                 app.taskBind();
 
                 $("#remindDate").datepicker({ minDate: 0, dateFormat: "mm/dd/yy" });
-                $("#saveReminder").on("click", app.createReminder);
+                $("#saveReminder").off("click").on("click", app.createReminder);
             });
         }, 50);
     });

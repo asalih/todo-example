@@ -12,19 +12,16 @@ namespace DevAssign.Controllers
         [Route("unexpected-error")]
         public ActionResult Unexpected()
         {
-            Response.StatusCode = 500;
             return View();
         }
         [Route("not-found")]
         public ActionResult NotFound()
         {
-            Response.StatusCode = 404;
             return View();
         }
         [Route("~/error")]
         public ActionResult HttpException()
         {
-            Response.StatusCode = 500;
             return View("Error");
         }
     }
