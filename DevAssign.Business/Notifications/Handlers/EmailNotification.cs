@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DevAssign.Data.Model;
 using System.Net.Mail;
 using System.Net;
+using System.Configuration;
 
 namespace DevAssign.Business.Notifications.Handlers
 {
@@ -17,16 +18,16 @@ namespace DevAssign.Business.Notifications.Handlers
             {
                 try
                 {
-                    var fromAddress = new MailAddress("ahmet.salih@gmail.com", "Ahmet Salih");
+                    var fromAddress = new MailAddress(ConfigurationManager.AppSettings["senderMail"], "Reminder");
                     var toAddress = new MailAddress(task.ToDo.User.Email, task.ToDo.User.FullName);
 
-                    const string fromPassword = "****";
-                    const string subject = "Reminder";
+                    string fromPassword = ConfigurationManager.AppSettings["senderMailPassword"];
+                    string subject = "Reminder";
                     string body = string.Format("Reminder for: {0}", task.TaskBody);
 
                     var smtp = new SmtpClient
                     {
-                        Host = "smtp.gmail.com",
+                        Host = ConfigurationManager.AppSettings["senderSmtp"],
                         Port = 587,
                         EnableSsl = true,
                         DeliveryMethod = SmtpDeliveryMethod.Network,

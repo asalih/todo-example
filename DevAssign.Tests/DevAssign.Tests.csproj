@@ -103,7 +103,7 @@
   <ItemGroup>
     <Compile Include="Data\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\CommonControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

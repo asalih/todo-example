@@ -10,7 +10,7 @@ using DevAssign.Controllers;
 namespace DevAssign.Tests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+    public class CommonControllerTest
     {
         [TestMethod]
         public void Index()

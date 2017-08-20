@@ -29,13 +29,19 @@ namespace DevAssign.Business.Notifications
 
                     if (reminders != null && reminders.Count > 0)
                     {
-                        foreach (var item in notificationObjects)
+                        foreach (var reminder in reminders)
                         {
-                            foreach (var reminder in reminders)
+                            foreach (var item in notificationObjects)
                             {
+
                                 item.NotifyUser(reminder.Task);
                             }
+                            reminder.NotifyState = true;
+                            reminderRepo.Update(reminder);
                         }
+
+                        unitOfWorks.SaveChanges();
+                        unitOfWorks.Dispose();
                     }
                 });
             }
