@@ -34,6 +34,9 @@ namespace DevAssign
             try
             {
                 DevAssign.Business.Logging.LoggingManager.GetLogger().Log(exception);
+                Context.Response.RedirectToRoute(new RouteValueDictionary(
+               new { action = "Unexpected", controller = "Error" }));
+                Server.ClearError();
             }
             catch (Exception)
             {
