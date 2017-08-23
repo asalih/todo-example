@@ -103,7 +103,7 @@
                 data: { toDoName: $("#toDoName").val() },
                 async: false,
                 success: function (result) {
-                    app.renderAll(function () { app.todoBind(); app.taskBind(); });
+                    app.renderAll(app.loadCallBack);
                 }
             });
         }
@@ -114,7 +114,7 @@
                 data: { toDoName: $("#toDoName").val() },
                 async: false,
                 success: function (result) {
-                    app.renderAll(function () { app.todoBind(); app.taskBind(); });
+                    app.renderAll(app.loadCallBack);
                 }
             });
         }
@@ -140,7 +140,7 @@
             type: 'POST',
             async: false,
             data: {
-                ticks: Date.parse($("#remindDate").val()) + min + hour, 
+                ticks: Date.parse($("#remindDate").val()) + min + hour,
             },
             success: function (result) {
                 $("#reminderContent>ul").prepend(result);
@@ -190,16 +190,19 @@
         $("#activeTask,#activeToDo,#taskBody").val("")
     }
 
+    app.loadCallBack = function () {
+        app.todoBind();
+        app.taskBind();
+
+
+        $("#remindDate").datepicker({ minDate: 0, dateFormat: "mm/dd/yy" });
+        $("#saveReminder").off("click").on("click", app.createReminder);
+    }
+
 
     $(document).ready(function () {
         setTimeout(function () {
-            app.renderAll(function () {
-                app.todoBind();
-                app.taskBind();
-
-                $("#remindDate").datepicker({ minDate: 0, dateFormat: "mm/dd/yy" });
-                $("#saveReminder").off("click").on("click", app.createReminder);
-            });
+            app.renderAll(app.loadCallBack);
         }, 50);
     });
 })($);

@@ -10,6 +10,7 @@ namespace DevAssign.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(DevAssign.Data.Context.EFDataContext context)

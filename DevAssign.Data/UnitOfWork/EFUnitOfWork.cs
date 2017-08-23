@@ -20,7 +20,6 @@ namespace DevAssign.Data.UnitOfWork
 
         public EFUnitOfWork(IDbContext dbContext)
         {
-            Database.SetInitializer<EFDataContext>(null);
             context = dbContext as DbContext ?? throw new ArgumentNullException("dbContext can not be null.");
         }
         public IRepository<T> GetRepository<T>() where T : EntityBase

@@ -9,6 +9,7 @@ namespace DevAssign.Data.Context
         public EFDataContext()
             : base("SqlDataContext")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFDataContext, DevAssign.Data.Migrations.Configuration>("SqlDataContext"));
         }
 
         public virtual DbSet<Task> Task { get; set; }
