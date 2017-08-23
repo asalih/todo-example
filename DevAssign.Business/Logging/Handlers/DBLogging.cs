@@ -36,7 +36,7 @@ namespace DevAssign.Business.Logging.Handlers
                 });
             }
             catch (Exception)
-            { return factory.StartNew(() => { }); }
+            { return null; }
 
         }
     }
