@@ -18,9 +18,9 @@ namespace DevAssign.Data.UnitOfWork
 
         #endregion
 
-        public EFUnitOfWork(IDbContext dbContext)
+        public EFUnitOfWork(DbContext dbContext)
         {
-            context = dbContext as DbContext ?? throw new ArgumentNullException("dbContext can not be null.");
+            context = dbContext ?? throw new ArgumentNullException("dbContext can not be null.");
         }
         public IRepository<T> GetRepository<T>() where T : EntityBase
         {

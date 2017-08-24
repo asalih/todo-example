@@ -1,4 +1,6 @@
-﻿using DevAssign.Business.Notifications;
+﻿using DevAssign.Business;
+using DevAssign.Business.Notifications;
+using DevAssign.Data.Contracts;
 using System.Threading;
 using System.Web;
 
@@ -12,7 +14,8 @@ namespace DevAssign
         {
             t = new Timer((state) =>
             {
-                using (DevAssign.Data.UnitOfWork.EFUnitOfWork unitOfWork = new Data.UnitOfWork.EFUnitOfWork(new Data.Context.EFDataContext()))
+                
+                using (IUnitOfWork unitOfWork = ContainerManager.Container.Resolve<IUnitOfWork>())
                 {
                     new NotificationManager().NotifyUsers(unitOfWork).Wait();
                 }

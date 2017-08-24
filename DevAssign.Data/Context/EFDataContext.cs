@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace DevAssign.Data.Context
 {
-    public class EFDataContext : DbContext, IDbContext
+    public class EFDataContext : DbContext
     {
         public EFDataContext()
             : base("SqlDataContext")

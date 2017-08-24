@@ -7,6 +7,7 @@ using DevAssign.Business.Notifications.Handlers;
 using DevAssign.Data.Context;
 using DevAssign.Data.Contracts;
 using DevAssign.Data.UnitOfWork;
+using System.Data.Entity;
 
 namespace DevAssign.Business
 {
@@ -21,7 +22,7 @@ namespace DevAssign.Business
                 Component.For<INotification>().ImplementedBy<EmailNotification>(),
                 //Component.For<INotification>().ImplementedBy<SMSNotification>(),
                 Component.For<ILogging>().ImplementedBy<DBLogging>(),
-                Component.For<IDbContext>().ImplementedBy<EFDataContext>().Named("dataContext").LifestyleTransient(),
+                Component.For<DbContext>().ImplementedBy<EFDataContext>().Named("dataContext").LifestyleTransient(),
                 Component.For<IUnitOfWork>().ImplementedBy<EFUnitOfWork>().Named("unitOfWork").LifestyleTransient()
             );
         }
